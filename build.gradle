@@ -18,17 +18,21 @@ repositories {
 }
 
 ext {
+    //사용할 스프링 클라우드 버전 정의
     set('springCloudVersion', "2023.0.3")
 }
 
 dependencies {
+    //스프링 웹을 토대로 해서 설정 서버를 구축할 수 있는 라이브러리와 유틸리티 제공
     implementation 'org.springframework.cloud:spring-cloud-config-server'
+    //스프링 테스트, JUnit, 어서트J, 모키토를 포함해 애플리케이션을 테스트할 수 있는 여러 라이브러리 및 유틸리티를 제공
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 dependencyManagement {
     imports {
+        //스프링 클라우드 의존성 관리를 위한 BOM(bill of material)
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
