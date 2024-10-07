@@ -40,3 +40,8 @@ dependencyManagement {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootBuildImage {
+    imageName = "polarbookshop-config-server:latest"
+}
+
