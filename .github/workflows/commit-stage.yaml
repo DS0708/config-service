@@ -39,6 +39,15 @@ jobs:
         run: |
           chmod +x gradlew 
           ./gradlew build
+      - name: Setup tools # 쿠버네티스 매니페스트 파일 검증을 위한 사전작업
+        uses: alexellis/setup-arkade@v3
+      - name: Install tools
+        uses: alexellis/arkade-get@master # Arkade를 사용하여 지정된 도구를 설치
+        with:
+          kubeconform: latest # kubeconform은 k8s 매니페스트 유효성을 검사하는 도구
+      - name: Validate Kubernetes manifests
+        run: |
+          kubeconform --strict k8s
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
