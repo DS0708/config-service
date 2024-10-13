@@ -28,6 +28,9 @@ dependencies {
     //스프링 테스트, JUnit, 어서트J, 모키토를 포함해 애플리케이션을 테스트할 수 있는 여러 라이브러리 및 유틸리티를 제공
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    //Netty는 성능상 이점을 얻기 위해 네이티브 코드를 사용해 시스템의 DNS 리졸버와 연동하는데, ARM 기반의 칩에서는 필요한 라이브러리가 없어서 이 native 라이브러리들을 직접 명시적으로 제공해줘야 한다.
+    runtimeOnly 'io.netty:netty-resolver-dns-native-macos:4.1.104.Final:osx-aarch_64'
 }
 
 dependencyManagement {
