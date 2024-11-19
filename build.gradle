@@ -46,7 +46,7 @@ tasks.named('test') {
 
 //빌드팩을 사용해 OCI 이미지를 빌드하기 위한 스프링 부트 플러그인 작업
 bootBuildImage{
-    imageName = "${project.name}"   //버전 번호를 사용하지 않고 암묵적인 latest 태그를 사용
+    imageName = "polar-${project.name}"   //버전 번호를 사용하지 않고 암묵적인 latest 태그를 사용
     environment = ["BP_JVM_VERSION" : "17.*"] //이미지에 설치할 JVM버전
 
     docker {
